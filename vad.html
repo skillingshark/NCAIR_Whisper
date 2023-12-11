@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Realtime Speech-to-Text</title>
+    <script src="https://cdn.jsdelivr.net/npm/onnxruntime-web/dist/ort.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@ricky0123/vad-web@0.0.7/dist/bundle.min.js"></script>
+</head>
+<body>
+
+<div id="status">Recording not started</div>
+
+ <div id="resultContainer">
+        <h2>Transcription Result:</h2>
+        <p id="transcriptionResult"></p>
+        <p id="detectedLanguage"></p>
+    </div>
+
+
+<script>
+    async function main() {
+        const statusElement = document.getElementById('status');
+        const resultContainer = document.getElementById('resultContainer');
+        const transcriptionResult = document.getElementById('transcriptionResult');
+        const detectedLanguage = document.getElementById('detectedLanguage');
+        
+        const myvad = await vad.MicVAD.new({
+            onSpeechStart: () => {
+                statusElement.textContent = 'Recording started';
+            },
+            onSpeechEnd: async (audio) => {
+                statusElement.textContent = 'Recording finished';
+
+                const audioBlob = new Blob([audio], { type: 'audio/wav' });
+                // If you have the encodeWAV function, use it
+                const wavBuffer = vad.utils.encodeWAV(new Float32Array(audio));
+
+                // Create Blob from the WAV buffer
+                const wavBlob = new Blob([wavBuffer], { type: 'audio/wav' });
+
+                // Create FormData and append the audio file
+                const formData = new FormData();
+                formData.append('audio', wavBlob, 'audio.wav');
+
+                // // Make a POST request to your Flask server
+                // const response = await fetch('http://your-flask-server-url/transcribe', {
+                //     method: 'POST',
+                //     body: formData,
+                // });
+                
+
+                // // Parse and use the response
+                // const result = await response.json();
+                // console.log(result);
+
+                try {
+                const response = await fetch('http://127.0.0.1:5000/transcribe', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (!response.ok) {
+                    throw new Error('Transcription failed.');
+                }
+
+                const result = await response.json();
+                transcriptionResult.textContent = result.text;
+                // detectedLanguage.textContent = `Detected Language: ${result.detected_language}`;
+                resultContainer.style.display = 'block';
+                } 
+              catch (error) {
+                console.error(error);
+                alert(error)
+                alert('Transcription failed. Please try again.');
+              }
+            },
+        });
+        myvad.start();
+    }
+
+    main();
+</script>
+
+</body>
+</html>
