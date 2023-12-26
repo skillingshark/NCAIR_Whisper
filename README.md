@@ -29,19 +29,26 @@ make -j # using make in windows may create problems .... linux env is preferred
 - After the build just start live server from index.html , now you can start speech to text transcription
 - In case of errors follow the steps below
 
+### Downloading the models
+-  tiny.en': https://whisper.ggerganov.com/ggml-model-whisper-tiny.en.bin
+-  base.en': https://whisper.ggerganov.com/ggml-model-whisper-base.en.bin
+-  tiny-en-q5_1': https://whisper.ggerganov.com/ggml-model-whisper-tiny.en-q5_1.bin
+-  base-en-q5_1': https://whisper.ggerganov.com/ggml-model-whisper-base.en-q5_1.bin
+
+
 ### Errors
 1. Error in fetching the ml models
-   - In this case download the ml models explicitly from the links in index.html and saving them in the new_folder ( folder containing the html and all js files )
+   - In this case download the ml models explicitly from the links above (also there in index.html) and saving them in the new_folder ( folder containing the html and all js files )
    - Then modify the links in the html file so match the path eg :
      ```
-     # In my case all files are there in 'Final_builds/02_Stream.wasm_final'
+     # Here all files are there in 'vad_wasm'
       function loadWhisper(model) {
                 let urls = {
-                    'tiny.en': 'http://127.0.0.1:5872/Final_builds/02_Stream.wasm_final/ggml-model-whisper-tiny.en.bin',
-                    'base.en': 'http://127.0.0.1:5872/Final_builds/02_Stream.wasm_final/ggml-model-whisper-base.en.bin',
+                    'tiny.en': 'http://127.0.0.1:5872/vad_wasm/ggml-model-whisper-tiny.en.bin',
+                    'base.en': 'http://127.0.0.1:5872/vad_wasm/ggml-model-whisper-base.en.bin',
 
-                    'tiny-en-q5_1':  'https://whisper.ggerganov.com/ggml-model-whisper-tiny.en-q5_1.bin',
-                    'base-en-q5_1':  'https://whisper.ggerganov.com/ggml-model-whisper-base.en-q5_1.bin',
+                    'tiny-en-q5_1':  'http://127.0.0.1:5872/vad_wasm/ggml-model-whisper-tiny.en-q5_1.bin',
+                    'base-en-q5_1':  'http://127.0.0.1:5872/vad_wasm/ggml-model-whisper-base.en-q5_1.bin',
                 };
      ```
 2. Shared array buffer not defined or Module.Fs not defined
