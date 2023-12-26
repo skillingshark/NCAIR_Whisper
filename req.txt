@@ -1,0 +1,11 @@
+Flask==2.0.1
+Flask-Cors==3.0.10
+whisper==0.7.1
+Werkzeug==2.0.1  # A required dependency for Flask
+itsdangerous==2.0.1  # A required dependency for Flask
+click==8.0.1  # A required dependency for Flask
+Jinja2==3.0.1  # A required dependency for Flask
+MarkupSafe==2.0.1  # A required dependency for Flask
+
+# ffmpeg library needs to be downloaded externally and added to path  
+# link : https://github.com/BtbN/FFmpeg-Builds/releases 
