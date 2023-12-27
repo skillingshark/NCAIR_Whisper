@@ -1,0 +1,21 @@
+2023/12/27 16:13:10 [error] 12248#12000: *1 CreateFile() "C:\nginx/html/favicon.ico" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /favicon.ico HTTP/1.1", host: "localhost", referrer: "http://localhost/"
+2023/12/27 16:24:28 [notice] 24020#27200: signal process started
+2023/12/27 16:26:02 [notice] 22832#3356: signal process started
+2023/12/27 16:26:53 [notice] 14848#13892: signal process started
+2023/12/27 16:27:04 [notice] 14872#14876: signal process started
+2023/12/27 16:27:27 [notice] 6016#18424: signal process started
+2023/12/27 16:27:35 [error] 16228#17636: *1 CreateFile() "C:/nginx/ncair_whisper_deploy/favicon.ico" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /favicon.ico HTTP/1.1", host: "localhost:8080", referrer: "http://localhost:8080/"
+2023/12/27 16:37:29 [notice] 14068#21568: signal process started
+2023/12/27 16:39:43 [notice] 25236#22496: signal process started
+2023/12/27 16:40:21 [notice] 8352#22784: signal process started
+2023/12/27 17:52:35 [notice] 19052#1416: signal process started
+2023/12/27 18:00:13 [notice] 17756#12208: signal process started
+2023/12/27 18:00:23 [notice] 12784#24448: signal process started
+2023/12/27 18:53:42 [notice] 15168#27280: signal process started
+2023/12/27 19:19:37 [notice] 18192#29016: signal process started
+2023/12/27 19:22:45 [notice] 25776#19800: signal process started
+2023/12/27 19:25:16 [notice] 10148#15796: signal process started
+2023/12/27 19:28:41 [notice] 29904#29728: signal process started
+2023/12/27 19:31:54 [notice] 28960#23404: signal process started
+2023/12/27 19:34:33 [notice] 10920#30144: signal process started
+2023/12/27 19:38:57 [notice] 28508#24616: signal process started
